@@ -1,0 +1,53 @@
+.root {
+  border: 2px solid blue;
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  .player {
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-weight: bold;
+    input {
+      border: none;
+      width: 10rem;
+      padding: 0.5rem;
+      font: inherit;
+      font-size: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      animation: pulse-text 2s infinite;
+      background-color: #46432f;
+    }
+  }
+  .playerName {
+    border-radius: 4px;
+    width: 10rem;
+    display: inline-block;
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    color: #e1dec7;
+  }
+  .playerSymbol {
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: #e1dec7;
+  }
+
+  @keyframes pulse-text {
+    0% {
+      color: #e1dec7;
+    }
+    50% {
+      color: #9f9d83;
+    }
+    100% {
+      color: #e1dec7;
+    }
+  }
+}
