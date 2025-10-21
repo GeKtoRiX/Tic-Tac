@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import styles from './Player.module.scss';
 
-export default function Player({ initialName, symbol }) {
+export default function Player({ initialName, symbol, isActive }) {
+  // Состояние отслеживания возможности(true/false) редактирования имени игрока.
   const [isEditing, setIsEditing] = useState(false);
+  // Состояние отслеживания имени(String) игрока.
   const [playerName, setPlayerName] = useState(initialName);
 
+  // Изменение возможности(true/false) редактирования имени игрока.
   function handleEditClick() {
     setIsEditing((editing) => !editing);
   }
-
-  function handleChange(event) {
+  // Изменение имени игрока.
+  function handleNameChange(event) {
     setPlayerName(event.target.value);
   }
 
@@ -17,13 +20,19 @@ export default function Player({ initialName, symbol }) {
   let editablePlayerName = !isEditing ? (
     <span className={styles.playerName}>{playerName}</span>
   ) : (
-    <input type='text' required value={playerName} onChange={handleChange} />
+    <input
+      type='text'
+      required
+      value={playerName}
+      onChange={handleNameChange}
+    />
   );
   // Состояние кнопки редактирования имени игрока.
   let btnCaption = !isEditing ? 'Edit' : 'Save';
 
+  // Рендер интрефейся игрока.
   return (
-    <li className={styles.root}>
+    <li className={`${styles.root} ${isActive ? 'active' : undefined}`}>
       <span className={styles.player}>
         {editablePlayerName}
         <span className={styles.playerSymbol}>{symbol}</span>
