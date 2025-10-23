@@ -1,7 +1,7 @@
 export const WINNING_COMBINATIONS = [
   // Горизонтальные выигрышные комбинации.
   [
-    // Первый ряд
+    // Первый ряд [X][X][X]
     { row: 0, col: 0 },
     { row: 0, col: 1 },
     { row: 0, col: 2 },

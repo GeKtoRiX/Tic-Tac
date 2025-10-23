@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import styles from './Player.module.scss';
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onChangeName,
+}) {
   // Состояние отслеживания возможности(true/false) редактирования имени игрока.
   const [isEditing, setIsEditing] = useState(false);
-  // Состояние отслеживания имени(String) игрока.
-  const [playerName, setPlayerName] = useState(initialName);
-
   // Изменение возможности(true/false) редактирования имени игрока.
   function handleEditClick() {
+    // Передача измененного значения реакту для перерендера.
     setIsEditing((editing) => !editing);
+    // Измененное имя игрока.
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
+
+  // Состояние отслеживания имени(String) игрока.
+  const [playerName, setPlayerName] = useState(initialName);
   // Изменение имени игрока.
   function handleNameChange(event) {
     setPlayerName(event.target.value);
